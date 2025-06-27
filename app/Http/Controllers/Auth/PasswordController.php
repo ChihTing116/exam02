@@ -22,9 +22,16 @@ class PasswordController extends Controller
      */
     public function update(Request $request)
     {
-        $request->validate([
-            'current_password' => ['required'],
-            'new_password' => ['required', 'min:6', 'confirmed'],
+        $validated = $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:6|confirmed',
+        ],[
+            'current_password.required' => '請輸入目前密碼',
+
+            'new_password.required'=>'請輸入新密碼',
+            'new_password.min'=>'密碼至少6個字',
+            'new_password.confirmed'=> '密碼確認不一致，請重新輸入',
+
         ]);
 
         $user = Auth::user();

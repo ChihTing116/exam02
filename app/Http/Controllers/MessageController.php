@@ -28,6 +28,7 @@ class MessageController extends Controller
         ],[
             'title.required' => '請輸入標題',
             'title.max' => '標題不能超過 50 字',
+
             'content.required' => '請輸入內容',
             'content.max' => '內容不能超過 255 字',
     ]);
